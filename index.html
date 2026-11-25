@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alka Shop - Chaussures & Vêtements à Cotonou</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f8f0ff;
+            text-align: center;
+            padding-bottom: 90px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #87CEEB, #8A2BE2, #FF69B4);
+            color: white;
+            padding: 20px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        
+        .promo {
+            background: #FF69B4;
+            color: white;
+            padding: 25px 15px;
+        }
+        
+        .promo h2 {
+            margin: 0;
+            font-size: 26px;
+        }
+        
+        .promo p {
+            margin: 8px 0;
+        }
+        
+        .promo button {
+            background: white;
+            color: #FF69B4;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .search-box {
+            padding: 15px;
+        }
+        
+        .search-box input {
+            width: 85%;
+            max-width: 400px;
+            padding: 12px;
+            border-radius: 25px;
+            border: 2px solid #8A2BE2;
+            font-size: 15px;
+            outline: none;
+        }
+        
+        .categories button {
+            background: white;
+            color: #8A2BE2;
+            border: 2px solid #8A2BE2;
+            padding: 10px 18px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .categories button.active {
+            background: #8A2BE2;
+            color: white;
+        }
+        
+        .produits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .carte {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px;
+            width: 280px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carte img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .carte h3 {
+            color: #8A2BE2;
+            margin: 10px 0 5px;
+        }
+        
+        .prix {
+            color: #FF69B4;
+            font-weight: bold;
+            font-size: 19px;
+        }
+        
+        .ancien-prix {
+            text-decoration: line-through;
+            color: grey;
+            font-size: 14px;
+        }
+        
+        .btn-ajout {
+            background: #8A2BE2;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 20px;
+            font-size: 15px;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        .badge {
+            background: #FF69B4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .avis-section {
+            background: white;
+            padding: 20px 15px;
+            margin: 20px 10px;
+            border-radius: 20px;
+        }
+        
+        .avis {
+            background: #f8f0ff;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px auto;
+            max-width: 350px;
+            text-align: left;
+        }
+        
+        .etoiles {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        
+        .panier-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #8A2BE2;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            z-index: 20;
+        }
+        
+        .panier-bar button {
+            background: #FF69B4;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .float-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 15px;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .float-btn a {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wa {
+            background: #25D366;
+        }
+        
+        .call {
+            background: #87CEEB;
+        }
+        
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 25px 15px;
+        }
+        
+        footer a {
+            color: #87CEEB;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>ALKA SHOP</h1>
+        <p>Chaussures & Vêtements - Cotonou</p>
+    </header>
+
+    <div class="promo">
+        <h2>🔥 PROMO DE LA SEMAINE -20%</h2>
+        <p>Sur toutes les chaussures Nike ! Livraison gratuite à Cotonou dès 20.000 FCFA</p>
+        <p>⏰ Offre valable jusqu'à Dimanche</p>
+        <button onclick="filtrerCategorie('chaussure', document.getElementById('btn-chaussure'))">Voir les promos 👟</button>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="recherche" placeholder="🔍 Rechercher : Nike, robe..." onkeyup="filtrer()">
+    </div>
+
+    <div class="categories">
+        <button class="active" onclick="filtrerCategorie('tout', this)">Tout</button>
+        <button id="btn-chaussure" onclick="filtrerCategorie('chaussure', this)">👟 Chaussures</button>
+        <button onclick="filtrerCategorie('vetement', this)">👕 Vêtements</button>
+    </div>
+
+    <h2 style="color:#8A2BE2;">NOS PRODUITS</h2>
+
+    <div class="produits">
+        <div class="carte" data-cat="chaussure">
+            <span class="badge">-20% PROMO</span>
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
+            <h3>Nike Air Rouge</h3>
+            <p>Pointure 40 à 45</p>
+            <p><span class="ancien-prix">18.000 FCFA</span> <span class="prix">15.000 FCFA</span></p>
+            <button class="btn-ajout" onclick="ajouter('Nike Air Rouge', 15000)">+ Ajouter au Panier</button>
+        </div>
+        <div class="carte" data-cat="chaussure">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500">
+            <h3>Sneakers Blanc Violet</h3>
+            <p>Pointure 38 à 44</p>
+            <p class="prix">13.500 FCFA</p>
+            <button class="btn-ajout" onclick="ajouter('Sneakers Blanc Violet', 13500)">+ Ajouter au Panier</button>
+        </div>
+        <div class="carte" data-cat="vetement">
+            <span class="badge">NOUVEAU</span>
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500">
+            <h3>Robe Élégante Rose</h3>
+            <p>Taille S / M / L</p>
+            <p class="prix">12.000 FCFA</p>
+            <button class="btn-ajout" onclick="ajouter('Robe Élégante Rose', 12000)">+ Ajouter au Panier</button>
+        </div>
+        <div class="carte" data-cat="vetement">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500">
+            <h3>T-Shirt Homme Violet</h3>
+            <p>Taille M / L / XL</p>
+            <p class="prix">8.000 FCFA</p>
+            <button class="btn-ajout" onclick="ajouter('T-Shirt Homme Violet', 8000)">+ Ajouter au Panier</button>
+        </div>
+    </div>
+
+    <div class="avis-section">
+        <h2 style="color:#8A2BE2;">⭐ Ce que disent nos clients</h2>
+        <div class="avis">
+            <div class="etoiles">⭐⭐⭐⭐⭐</div>
+            <p><b>Aïcha - Cotonou</b></p>
+            <p>"J'ai commandé les Nike, livraison en 2h ! Très sérieux, je recommande Alka Shop."</p>
+        </div>
+        <div class="avis">
+            <div class="etoiles">⭐⭐⭐⭐⭐</div>
+            <p><b>Jean - Godomey</b></p>
+            <p>"La robe est exactement comme sur la photo. Qualité top pour le prix."</p>
+        </div>
+        <div class="avis">
+            <div class="etoiles">⭐⭐⭐⭐⭐</div>
+            <p><b>Grace - Calavi</b></p>
+            <p>"Service rapide sur WhatsApp, on m'a répondu tout de suite. Merci !"</p>
+        </div>
+    </div>
+
+    <footer>
+        <h3>ALKA SHOP</h3>
+        <p>📍 Cotonou, Bénin - Livraison partout au Bénin</p>
+        <p>📞 <a href="tel:+2290157475996">Appeler Alka Shop</a></p>
+        <p>💬 WhatsApp : +229 01 57 47 59 96 </p>
+        <p>🕐 Ouvert 7j/7 : 8h - 21h</p>
+        <p style="font-size:12px; color:#aaa;">© 2026 Alka Shop - Tous droits réservés</p>
+    </footer>
+
+    <div class="float-btn">
+        <a class="wa" href="https://wa.me/2290157475996?text=Bonjour%20Alka%20Shop" target="_blank">💬</a>
+        <a class="call" href="tel:+2290157475996">📞</a>
+    </div>
+
+    <div class="panier-bar">
+        <span>🛒 Panier : <span id="nb">0</span> - <span id="total">0</span> FCFA</span>
+        <button onclick="commanderPanier()">Commander</button>
+    </div>
+
+    <script>
+        let panier = [];
+        let total = 0;
+
+        function ajouter(nom, prix) {
+            panier.push(nom);
+            total += prix;
+            document.getElementById('nb').innerText = panier.length;
+            document.getElementById('total').innerText = total.toLocaleString('fr-FR');
+            alert(nom + " ajouté !");
+        }
+
+        function filtrer() {
+            let mot = document.getElementById('recherche').value.toLowerCase();
+            document.querySelectorAll('.carte').forEach(c => {
+                c.style.display = c.querySelector('h3').innerText.toLowerCase().includes(mot) ? 'block' : 'none';
+            });
+        }
+
+        function filtrerCategorie(cat, btn) {
+            document.querySelectorAll('.categories button').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            document.querySelectorAll('.carte').forEach(c => {
+                c.style.display = (cat === 'tout' || c.dataset.cat === cat) ? 'block' : 'none';
+            });
+            window.scrollTo({
+                top: 350,
+                behavior: 'smooth'
+            });
+        }
+
+        function commanderPanier() {
+            if (panier.length === 0) {
+                alert("Ton panier est vide !");
+                return;
+            }
+            let numero = "2290157475996";
+            let message = "Bonjour Alka Shop, je veux commander :\n- " + panier.join("\n- ") + "\nTotal : " + total + " FCFA";
+            window.open("https://wa.me/" + numero + "?text=" + encodeURIComponent(message), "_blank");
+        }
+    </script>
+
+</body>
+
+</html>
